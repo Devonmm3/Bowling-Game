@@ -2,9 +2,9 @@
   "name": "Bowling-Game",
   "version": "1.0.0",
   "description": "Coding Exercise",
-  "main": "index.js",
+  "main": "bowlingGame.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start --single-run --browsers ChromeHeadless,FirefoxHeadless,IE karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,19 @@
   },
   "homepage": "https://github.com/Devonmm3/Bowling-Game#readme",
   "dependencies": {
-    "bowling": "^1.3.9"
+    "bowling": "^1.3.9",
+    "developer": "^1.0.1",
+    "dotenv-vars": "^2.0.1",
+    "firefox": "0.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "karma": "^4.0.1",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "mocha": "^6.0.2"
   }
 }
