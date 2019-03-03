@@ -245,8 +245,11 @@ https://www.meziantou.net/2018/03/15/test-javascript-code-using-karma-mocha-chai
 
 # Packages installed:
 npm install
+
 npm i --save-dev karma karma-mocha karma-chai
+
 npm i --save-dev karma-chrome-launcher karma-firefox-launcher karma-ie-launcher
+
 npm i --save-dev mocha chai
 
 # Langauges used:
