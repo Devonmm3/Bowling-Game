@@ -47,7 +47,7 @@ BowlingGameWhole is the constructor in the BowlingGame.js file with two methods 
 Continue to get an error for the firefox and IE browsers, the terminal says that my platform does not support them.
 (photo of terminal attached in images folder in the repo).
 
-Initial test:
+Initial test, just to check on what happens if there is a gutterball:
 
 describe("BowlingGameWhole", function() {
 	it("keeps track of gutterball game", function() {
@@ -61,7 +61,7 @@ describe("BowlingGameWhole", function() {
 
 --continued to get the error that firefox is not working
 
-Second Test:
+Second Test, checked gutterballs and also each number of pins that fall:
 
 describe("BowlingGameWhole", function() {
 	var game;
@@ -94,6 +94,44 @@ describe("BowlingGameWhole", function() {
 process.env["IE_BIN"] = "production";" to the karma.config.js page, now getting error:
 Killing extra IE process failed. Error: Command failed: wmic.exe Path win32_Process where "Name='iexplore.exe' and CommandLine Like '%SCODEF:undefined%'" call Terminate
 /bin/sh: wmic.exe: command not found
+
+Did third test, added the situation to handle a spare being rolled (ten pins knocked down but not all together), along with any other number of pins and gutterballs
+
+describe("BowlingGameWhole", function() {
+	var game;
+
+	this.beforeEach(function(){
+		game = new BowlingGameWhole();
+	});
+
+	function rollNumber (n, pins) {
+		for (var i = 0; i < n; i++) {
+			game.roll(pins)
+		}
+	}
+
+	function rollsSpare() {
+		game.roll(5);
+		game.roll(5);
+	}
+
+	it("keeps track of the gutterball game", function() {
+		rollNumber(20, 0);
+		expect(game.score()).to.equal(0);
+	});
+
+	it("handles anytime there is 1 pin that falls", function() {
+		rollNumber(20, 1);
+		expect(game.score()).to.equal(20);
+	});
+
+	it("handles 1 spare that is rolled", function() {
+		rollsSpare();
+		game.roll(3);
+		rollNumber(17, 0);
+		expect(game.score()).to.equal(16);
+	});
+});
 
 
 # Sources:
