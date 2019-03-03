@@ -1,7 +1,7 @@
 module.exports = function (config) {
 
     process.env["FIREFOX_BIN"] = "production";
-    process.env["IE_BIN"] = "production";
+                process.env["IE_BIN"] = "production";
 
     config.set({
         basePath: "",
@@ -12,6 +12,7 @@ module.exports = function (config) {
             'test/**/*.js'
         ],
 
+        
 
 
         reporters: ['progress'],
@@ -25,6 +26,8 @@ module.exports = function (config) {
             FirefoxHeadless: {
                 base: 'Firefox',
                 flags: ['-headless'],
+
+                
             },
         },
     })

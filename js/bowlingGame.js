@@ -67,35 +67,4 @@ BowlingGameWhole.prototype.currentScore = function () {
 
 
 
-
 }
-
-//design using the calculator. get score button, after entering in the text field
-
-// var buttonCal = document.getElementById("score-calculated");
-// var displayScore = document.getElementById("display-player-score");
-// var gameInputNumber = document.getElementById("game-input-number");
-
-// function calculate() {
-//     var scores = bowlingScore(gameInputNumber.value);
-//     displayScore.textContent = scores;
-// }
-
-// buttonCal.addEventListener("click", caluculate);
-
-// document.addEventListener("keydown", function (e) {
-//     if (e.keyCode === 12) {
-//         calculate();
-//     }
-// });
-
-// gameInputNumber.addEventListener("keydown", function (e) {
-//     if (!e.key.match(
-//             /[0-9]|x|X|\/|-|Enter|Delete|Control|Backspace|ArrowUp|ArrowDown|ArrowLeft|ArrowRight|Home/)) {
-//         event.preventDefault();
-//         gameInputNumber.className += "";
-//         setTimeout(function() {
-//             gameInputNumber.classList.remove("");
-//         }, 300);
-//     }
-// });
