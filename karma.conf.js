@@ -4,14 +4,17 @@ module.exports = function (config) {
                 process.env["IE_BIN"] = "production";
 
     config.set({
-        basePath: "",
+        
         frameworks: ['mocha', 'chai'],
         //files in this project to load to the browser
         files: [
-            'js/**/*.js',
+            'src/**/*.js',
             'test/**/*.js'
         ],
 
+        exclude: [
+
+        ],
         
 
 
@@ -20,7 +23,7 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         browsers: ['ChromeHeadless', 'Firefox', 'FirefoxDeveloper', 'FirefoxNightly', 'IE'],
-        autoWatch: false,
+        autoWatch: true,
         concurrency: Infinity,
         customLaunchers: {
             FirefoxHeadless: {

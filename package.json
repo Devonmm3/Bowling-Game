@@ -1,6 +1,6 @@
 {
   "name": "Bowling-Game",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Coding Exercise",
   "main": "bowlingGame.js",
   "scripts": {

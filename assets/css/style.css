@@ -1,3 +1,7 @@
+body {
+    color: grey;
+}
+
 .jumbotron {
     font-family: 'Courier New', Courier, monospace;
     color: darkmagenta;
