@@ -48,197 +48,213 @@ BowlingGameWhole is the constructor in the BowlingGame.js file with two methods 
 Continue to get an error for the firefox and IE browsers, the terminal says that my platform does not support them.
 (photo of terminal attached in images folder in the repo).
 
-Initial test, just to check on what happens if there is a gutterball:
-
-describe("BowlingGameWhole", function() {
-	it("keeps track of gutterball game", function() {
-		var game = new BowlingGameWhole();
-		for (var i = 0; i < 20; i++) {
-			game.roll(0);
-		}
-		expect(game.score()).to.equal(0);
-	});
-});
-
---continued to get the error that firefox is not working
-
-Second Test, checked gutterballs and also each number of pins that fall:
-
-describe("BowlingGameWhole", function() {
-	var game;
-
-	beforeEach(function(){
-		game = new BowlingGameWhole();
-	});
-
-	function rollNumber (n, pins) {
-		for (var i = 0; i < n; i++) {
-			game.roll(pins)
-		}
-	}
-
-	it("keeps track of gutterball game", function() {
-		rollNumber(20, 0);
-		expect(game.score()).to.equal(0);
-	});
-
-	it("handles anytime there is 1 pin that falls", function() {
-		rollNumber(20, 1);
-		expect(game.score()).to.equal(20);
-	});
-});
-
---continute to get the error, and the request is "02 03 2019 19:44:33.175:ERROR [launcher]: No binary for Firefox browser on your platform.
-  Please, set "FIREFOX_BIN" env variable."
-  
   --added "process.env["FIREFOX_BIN"] = "production";
-process.env["IE_BIN"] = "production";" to the karma.config.js page, now getting error:
+process.env["IE_BIN"] = "production";"
+process.env["FIREFOX_DEVELOPER_BIN] = "production";
+process.env{"FIREFOX_NIGHTLY_BIN"] = "production;
+to the karma.config.js page, now getting error:
 Killing extra IE process failed. Error: Command failed: wmic.exe Path win32_Process where "Name='iexplore.exe' and CommandLine Like '%SCODEF:undefined%'" call Terminate
 /bin/sh: wmic.exe: command not found
 
+Input the first example from the assignment in the console log ("X-X-X-X-X-X-X-X-X-X-XX").
+
+Initial test, just to check on what happens if there is a gutterball:
+
+
+	describe("BowlingGameWhole", function() {
+	it("should keep track of the gutterball game", function() {
+		var game = new BowlingGameWhole();
+		for (var i = 0; i < 20;i++) {
+		// rollNumber(20, 0);
+		game.rollBall(0);
+	}
+		expect(game.currentScore()).to.equal(0);
+	});
+});
+	
+--Photo of the test working in assets/images/Test1Success
+
+
+Second Test, to check checked gutterballs and also each number of pins that fall:
+
+
+	describe("BowlingGameWhole", function() {
+	var game;
+
+	this.beforeEach(function(){
+		game = new BowlingGameWhole();
+	});
+
+	function rollNumber (n, pins) {
+		for (var i = 0; i < n; i++) {
+			game.rollBall(pins)
+		}
+	}
+	
+	it("should keep track of the gutterball game", function() {
+		rollNumber(20,0);
+		expect(game.currentScore()).to.equal(0);
+	});
+
+	it("should handle any time 1 or more pin falls", function() {
+		rollNumber(20,1);
+		expect(game.currentScore()).to.equal(20);
+	});
+});
+
+--screen shot of the successful test is in assets/images/Test2Success
+  
+
+
 Did third test, added the situation to handle a spare being rolled (ten pins knocked down but not all together), along with any other number of pins and gutterballs
 
-describe("BowlingGameWhole", function() {
+	describe("BowlingGameWhole", function() {
 	var game;
-
 	this.beforeEach(function(){
 		game = new BowlingGameWhole();
-	});
 
 	function rollNumber (n, pins) {
 		for (var i = 0; i < n; i++) {
-			game.roll(pins)
+			game.rollBall(pins)
 		}
 	}
 
 	function rollsSpare() {
-		game.roll(5);
-		game.roll(5);
+		game.rollBall(5);
+		game.rollBall(5);	
 	}
-
-	it("keeps track of the gutterball game", function() {
-		rollNumber(20, 0);
-		expect(game.score()).to.equal(0);
+	
+	it("should keep track of the gutterball game", function() {
+		rollNumber(20,0);
+		expect(game.currentScore()).to.equal(0);
 	});
 
-	it("handles anytime there is 1 pin that falls", function() {
+	it("should give data any time 1 or more pin falls", function() {
 		rollNumber(20, 1);
-		expect(game.score()).to.equal(20);
+		expect(game.currentScore()).to.equal(20);
 	});
 
-	it("handles 1 spare that is rolled", function() {
+	it("should be able to give data for spare", function() {
 		rollsSpare();
-		game.roll(3);
-		rollNumber(17, 0);
-		expect(game.score()).to.equal(16);
+		game.rollBall(3);
+		rollNumber(16, 0);
+		expect(game.currentScore()).to.equal(21);
 	});
-});
+	});
 
 -Fourth Test, added the testing needed for when the bowler rolls a strike:
-
-describe("BowlingGameWhole", function() {
+	
+	describe("BowlingGameWhole", function() {
 	var game;
-
 	this.beforeEach(function(){
 		game = new BowlingGameWhole();
-	});
 
 	function rollNumber (n, pins) {
 		for (var i = 0; i < n; i++) {
-			game.roll(pins)
+			game.rollBall(pins)
 		}
 	}
 
 	function rollsSpare() {
-		game.roll(3);
-		game.roll(7);
-    }
-    
-    function rollsStrike() {
-        game.roll(10);
-    }
-
-	it("keeps track of the gutterball game", function() {
-		rollNumber(20, 0);
-		expect(game.score()).to.equal(0);
-	});
-
-	it("handles anytime there is 1 pin that falls", function() {
-		rollNumber(20, 1);
-		expect(game.score()).to.equal(20);
-	});
-
-	it("handles 1 spare that is rolled", function() {
-		rollsSpare();
-		game.roll(3);
-		rollNumber(17, 0);
-		expect(game.score()).to.equal(16);
-    });
-    
-    it("handles when a strike (all ten pins at once) is rolled", function() {
-        rollsStrike();
-        game.roll(3);
-        game.roll(4);
-        rollNumber(16,0);
-        expect(game.score()).to.equal(24);
-    })
-});
-
-Final Test:
-
-describe("BowlingGameWhole", function() {
-	var game;
-
-	beforeEach(function(){
-		game = new BowlingGameWhole();
-	});
-
-	function rollNumber (n, pins) {
-		for (var i = 0; i < n; i++) {
-			game.roll(pins)
-		}
-	}
-
-	function rollsSpare() {
-		game.roll(3);
-		game.roll(7);
+		game.rollBall(5);
+		game.rollBall(5);	
 	}
 
 	function rollsStrike() {
-		game.roll(10);
+		game.rollBall(10);
+	}
+	
+	it("should keep track of the gutterball game", function() {
+		rollNumber(20,0);
+		expect(game.currentScore()).to.equal(0);
+	});
+
+	it("should give data any time 1 or more pin falls", function() {
+		rollNumber(20, 1);
+		expect(game.currentScore()).to.equal(20);
+	});
+
+	it("should be able to give data for spare", function() {
+		rollsSpare();
+		game.rollBall(3);
+		rollNumber(16, 0);
+		expect(game.currentScore()).to.equal(21);
+	});
+
+	it("should be able to give data for a strike", function() {
+		rollsStrike();
+		game.rollBall(3);
+		game.rollBall(4);
+		rollNumber(16, 0);
+		expect(game.currentScore()).to.equal(24);
+	});
+	});
+	});
+
+--ran into an error that says "Connected on socket q74F83uukOHl7Ok0AAAA with id 51053655
+HeadlessChrome 72.0.3626 (Mac OS X 10.14.0): Executed 0 of 0 ERROR (0.003 secs / 0 secs)".  Sources on Stack OverFlow and Git are suggesting a rollback of Mac software to correct it, which I do no feel comfortable doing.  Screen shot of the testing working to launch the various browsers in assets/images/Test4Error.
+
+
+Final Test:
+
+--this test should handle a bowler that rolls a perfect game.
+
+		
+describe("BowlingGameWhole", function() {
+	var game;
+	this.beforeEach(function(){
+		game = new BowlingGameWhole();
+
+	function rollNumber (n, pins) {
+		for (var i = 0; i < n; i++) {
+			game.rollBall(pins)
+		}
 	}
 
-	it("keeps track of the gutterball game", function() {
-		rollNumber(20, 0);
-		expect(game.score()).to.equal(0);
+	function rollsSpare() {
+		game.rollBall(5);
+		game.rollBall(5);	
+	}
+
+	function rollsStrike() {
+		game.rollBall(10);
+	}
+	
+	it("should keep track of the gutterball game", function() {
+		rollNumber(20,0);
+		expect(game.currentScore()).to.equal(0);
 	});
 
-	it("handles anytime there is 1 pin that falls", function() {
+	it("should give data any time 1 or more pin falls", function() {
 		rollNumber(20, 1);
-		expect(game.score()).to.equal(20);
+		expect(game.currentScore()).to.equal(20);
 	});
 
-	it("handles 1 spare that is rolled", function() {
+	it("should be able to give data for spare", function() {
 		rollsSpare();
-		game.roll(3);
-		rollNumber(17, 0);
-		expect(game.score()).to.equal(16);
-	});
-
-	it("handles when a strike (all ten pins at once) is rolled", function() {
-		rollsStrike();
-		game.roll(3);
-		game.roll(4);
+		game.rollBall(3);
 		rollNumber(16, 0);
-		expect(game.score()).to.equal(24);
+		expect(game.currentScore()).to.equal(21);
 	});
 
-	it("handles a bowler doing a perfect game", function() {
+	it("should be able to give data for a strike", function() {
+		rollsStrike();
+		game.rollBall(3);
+		game.rollBall(4);
+		rollNumber(16, 0);
+		expect(game.currentScore()).to.equal(24);
+	});
+	it("should give data for a perfect game", function() {
 		rollNumber(12, 10);
-		expect(game.score()).to.equal(300);
+		expect(game.currentScore()).to.equal(300);
+	})
 	});
-});
+	});
 
+-continued to get the same error from the 4th test, included a screen shot in assets/images/Test5error
+
+
+**INCLUDED FINAL CODE HOW I WOULD CONTINUE WITH THE CODE IF IT WAS TESTING CORRECRLT**
 
 # Sources:
 
