@@ -2,14 +2,16 @@ module.exports = function (config) {
 
     process.env["FIREFOX_BIN"] = "production";
                 process.env["IE_BIN"] = "production";
+                process.env["FIREFOX_DEVELOPER_BIN"] = "production";
+                process.env["FIREFOX_NIGHTLY_BIN"] = "production";
 
     config.set({
         
         frameworks: ['mocha', 'chai'],
         //files in this project to load to the browser
         files: [
-            'src/**/*.js',
-            'test/**/*.js'
+            'js/bowlingGame.js',
+            'tests/testJS.js'
         ],
 
         exclude: [
