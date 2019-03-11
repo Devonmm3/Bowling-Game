@@ -7,7 +7,8 @@
 
 
 var BowlingGameWhole = function () {
-    this.rolls = [];
+   
+    this.roll = [];
     this.currentPlayerRoll = 0;
 };
 

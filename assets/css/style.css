@@ -7,3 +7,61 @@ body {
     color: darkmagenta;
     text-align: center;
 }
+
+.row {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin: auto;
+    width: 100%;
+    font-weight: bold;
+}
+
+.blue-bg {
+    background-color: blue;
+}
+
+.col {
+    padding: 0%;
+    display: inline;
+    margin: 0%;
+}
+
+#shortcut {
+    position: relative;
+    padding: auto;
+    margin: auto;
+}
+#user-game-input {
+   font-family: 'Courier New', Courier, monospace;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 0%;
+    font-size: 14;
+    border: 4px white;
+    transition: 1s;
+}
+
+#generated {
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: capitalize;
+    padding: 15px;
+    border: 1px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14;
+    transition-duration: 1s;
+}
+
+#generated 
+    :focus-within{
+        outline: blueviolet
+}
+
+#display-score {
+   font-family: 'Courier New', Courier, monospace;
+   width: 20%;
+   display: block;
+    text-align: center;
+    font-size: 12;
+    padding-top: 15%;
+}
