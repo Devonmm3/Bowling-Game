@@ -5,12 +5,12 @@ var displayScore = document.getElementById("display-score");
 //need to call the BowlingGameWhole cosntructor from the bowlingGame.js
 
 function generateScore() {
-    var bowlScore = BowlingGameWhole(userGameInput.value);
+    var bowlScore = bowlingScore(userGameInput.value);
     displayScore.textContent = bowlScore;
 }
 
 generateBtn.addEventListener("click", generateScore);
-console.log(generateScore);
+// console.log(generateScore);
 //enter button needs to show the score calculator
 
 document.addEventListener("keydown", function(e) {
