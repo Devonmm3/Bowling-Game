@@ -1,5 +1,5 @@
 # Bowling-Game
-Coding Exercise
+Coding Exercise-Enter your bowling scores from each frame, press the button and check the console for your score.
 
 # URL Link:
 	https://devonmm3.github.io/Bowling-Game/
@@ -45,9 +45,11 @@ o The process does not repeat – for example, knocking down all 10 pins on a bo
 throw does not provide any additional bonus throws.
 
 # The Code:
-BowlingGameWhole is the constructor in the BowlingGame.js file with two methods 1) rolls, which is the called function when the player rolls the ball and the knocked down pins make the argument and 2) currentPlayerSore, which is called at the end of the game.
+Front End- used 2 JS files, one for the bowling terms and setting up the code for the various points, and one for the UI, which controls the buttons and the HTML page.  When the numbers are added to the bar, the total score is generated and displayed in the console
 
 # Tests: 
+BowlingGameWhole is the constructor in the BowlingGame.js file with two methods 1) rolls, which is the called function when the player rolls the ball and the knocked down pins make the argument and 2) currentPlayerSore, which is called at the end of the game.
+
 Continue to get an error for the firefox and IE browsers, the terminal says that my platform does not support them.
 (photo of terminal attached in images folder in the repo).
 
